@@ -3,7 +3,7 @@ import GlobalState from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import React from 'react';
-import MainView from '../MainView'
+import MainView from '../components/MainView'
 
 export default class ReduxProvider extends React.Component {
     constructor(props) {
