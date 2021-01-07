@@ -9,6 +9,10 @@ import ActionBarView from './ActionBarView'
 import { QUIZZES_URL } from '../constants'
 import { questionAnswer, changeQuiz, nextQuiz, prevQuiz, submit, initQuizzes } from '../redux/actions'
 
+const Separator = () => (
+    <View style={styles.separator} />
+  );
+
 class MainView extends Component {
 
     componentDidMount(){
@@ -25,16 +29,17 @@ class MainView extends Component {
             return (
                 <SafeAreaView style={ styles.container }>
                     <StatusBar style="auto" />
+                    <Text style={{ fontSize: 20 }}> Your Score: {this.props.score} </Text>
                     <QuizCardView 
                         quiz={ this.props.quizzes[this.props.currentQuiz] }
                         currentQuiz={ this.props.currentQuiz }
                     />
+                    <Separator sytle={ styles.separator }/>
                     <TextInputView  quiz={ this.props.quizzes[this.props.currentQuiz] }
                                     onQuestionAnswer={(answer) => {
                                                         this.props.dispatch(questionAnswer(this.props.currentQuiz, answer))
                                                     }}
                     />
-                    <Text >{ this.props.currentQuiz }</Text>
                     <ActionBarView
                         onNextQuiz={()=>{
                             this.props.dispatch(nextQuiz(this.props.currentQuiz))
@@ -51,7 +56,6 @@ class MainView extends Component {
                         currentQuiz={ this.props.currentQuiz }
 
                     />
-                    <Text style={{ fontSize: 20 }}> Score: {this.props.score} </Text>
                 </SafeAreaView>
             )
         }

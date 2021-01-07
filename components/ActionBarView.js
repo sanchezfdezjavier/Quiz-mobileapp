@@ -20,6 +20,7 @@ export default function ActionBarView(props) {
                     accessibilityLabel="Next quiz button"
                 />
             </View>
+            <View style={styles.fixToText}>
             <Button
                 onPress={ props.onSubmitButtonPressed }
                 title="Submit"
@@ -32,6 +33,7 @@ export default function ActionBarView(props) {
                 color="#00a2ff"
                 accessibilityLabel="Load more quizzes button"
             />
+            </View>
         </View>
     )
 }
