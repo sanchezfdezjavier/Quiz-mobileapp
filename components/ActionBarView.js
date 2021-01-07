@@ -6,12 +6,14 @@ export default function ActionBarView(props) {
         <View>
             <Button
             onPress={null}
+            disabled={ !(props.currentQuiz > 0) }
             title="Prev"
             color="#841584"
             accessibilityLabel="Prev quiz button"
             />
             <Button
                 onPress={ props.onPrevQuiz }
+                disabled={ !(props.currentQuiz < 9) }
                 title="Next"
                 color="#841584"
                 accessibilityLabel="Next quiz button"

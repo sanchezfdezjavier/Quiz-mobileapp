@@ -5,8 +5,8 @@ const TextInputView = (props) => {
 
   return (
     <TextInput
-      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => props.onQuestionAnswer(text) }
+      style={{ width: 300, height: 40, borderColor: 'gray', borderWidth: 2 }}
+      onChangeText={ text => props.onQuestionAnswer(text) }
       value={ props.quiz.userAnswer || '' }
     />
   );

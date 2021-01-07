@@ -25,7 +25,7 @@ class MainView extends Component {
             return (
                 <SafeAreaView style={ styles.container }>
                     <StatusBar style="auto" />
-                    <Text> Quiz React Native Redux </Text>
+                    <Text style={{ fontSize: 25 }}> {this.props.score} </Text>
                     <QuizCardView 
                         quiz={ this.props.quizzes[this.props.currentQuiz] }
                         currentQuiz={ this.props.currentQuiz }
@@ -35,7 +35,7 @@ class MainView extends Component {
                                                         this.props.dispatch(questionAnswer(this.props.currentQuiz, answer))
                                                     }}
                     />
-                    <Text>{ this.props.currentQuiz }</Text>
+                    <Text >{ this.props.currentQuiz }</Text>
                     <ActionBarView
                         onNextQuiz={()=>{
                             this.props.dispatch(nextQuiz(this.props.currentQuiz))
@@ -43,6 +43,8 @@ class MainView extends Component {
                         onPrevQuiz={()=>{
                             this.props.dispatch(prevQuiz(this.props.currentQuiz))
                         }}
+                        currentQuiz={ this.props.currentQuiz }
+
                     />
                 </SafeAreaView>
             )

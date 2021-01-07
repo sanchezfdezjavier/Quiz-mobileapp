@@ -7,15 +7,16 @@ export default function QuizCardView(props) {
 
     return (
         <View>
-            <Image style={ styles.quizImage } source={ props.quiz.attachment ?? ImgageNotFound } />
-            <Text>{ props.quiz.question }</Text>
+            <Image style={ styles.quizImage } 
+                   source={ props.quiz.attachment ?? ImgageNotFound } />
+            <Text style={{ fontSize: 25 }}> { props.quiz.question } </Text>
         </View>
     )
-}
+};
 
 const styles = StyleSheet.create({
       quizImage: {
-          width: 300,
-          height: 400
+          width: 380,
+          height: 400,
       }
   });
