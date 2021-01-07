@@ -38,12 +38,14 @@ export default function ListView(){
   };
 
   return (
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
       />
+    </SafeAreaView>
   );
 };
 

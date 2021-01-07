@@ -1,11 +1,11 @@
 import React, { Component }  from 'react'
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { StatusBar } from 'expo-status-bar';
 import ListView from './ListView'
 import QuizCardView from './QuizCardView';
 import TextInputView from './TextInputView'
-import Icon from '../assets/icon.png'
+import ActionBarView from './ActionBarView'
 import { QUIZZES_URL } from '../constants'
 import { questionAnswer, changeQuiz, nextQuiz, prevQuiz, submit, initQuizzes } from '../redux/actions'
 
@@ -16,7 +16,7 @@ class MainView extends Component {
         this.props.dispatch(initQuizzes(QUIZZES_URL))
     }
 
-    render(){
+    render() {
         if(!this.props.finished) {
             return (
                 <Text>Loading...</Text>
@@ -26,9 +26,24 @@ class MainView extends Component {
                 <SafeAreaView style={ styles.container }>
                     <StatusBar style="auto" />
                     <Text> Quiz React Native Redux </Text>
-                    <Image style={ styles.quizImage } source={ Icon }/>
-                    <ListView/>
-                    <TextInputView/>
+                    <QuizCardView 
+                        quiz={ this.props.quizzes[this.props.currentQuiz] }
+                        currentQuiz={ this.props.currentQuiz }
+                    />
+                    <TextInputView  quiz={ this.props.quizzes[this.props.currentQuiz] }
+                                    onQuestionAnswer={(answer) => {
+                                                        this.props.dispatch(questionAnswer(this.props.currentQuiz, answer))
+                                                    }}
+                    />
+                    <Text>{ this.props.currentQuiz }</Text>
+                    <ActionBarView
+                        onNextQuiz={()=>{
+                            this.props.dispatch(nextQuiz(this.props.currentQuiz))
+                        }}
+                        onPrevQuiz={()=>{
+                            this.props.dispatch(prevQuiz(this.props.currentQuiz))
+                        }}
+                    />
                 </SafeAreaView>
             )
         }
@@ -52,10 +67,6 @@ const styles = StyleSheet.create({
       logo: {
         width: 66,
         height: 58,
-      },
-      quizImage: {
-          width: 300,
-          height: 400
       }
   });
 
