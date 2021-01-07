@@ -42,6 +42,12 @@ class MainView extends Component {
                         onPrevQuiz={()=>{
                             this.props.dispatch(prevQuiz(this.props.currentQuiz))
                         }}
+                        onSubmitButtonPressed={()=>{
+                            this.props.dispatch(submit(this.props.quizzes))
+                        }}
+                        onLoadQuizzesButtonPressed={()=>{ 
+                            this.props.dispatch(initQuizzes(QUIZZES_URL))
+                        }}
                         currentQuiz={ this.props.currentQuiz }
 
                     />
