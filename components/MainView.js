@@ -25,7 +25,6 @@ class MainView extends Component {
             return (
                 <SafeAreaView style={ styles.container }>
                     <StatusBar style="auto" />
-                    <Text style={{ fontSize: 25 }}> {this.props.score} </Text>
                     <QuizCardView 
                         quiz={ this.props.quizzes[this.props.currentQuiz] }
                         currentQuiz={ this.props.currentQuiz }
@@ -46,6 +45,7 @@ class MainView extends Component {
                         currentQuiz={ this.props.currentQuiz }
 
                     />
+                    <Text style={{ fontSize: 20 }}> Score: {this.props.score} </Text>
                 </SafeAreaView>
             )
         }
